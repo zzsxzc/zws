@@ -1,10 +1,15 @@
 server:
-  port: 8080
+  port: 443
+  ssl:
+    key-store: freedommxc.top.jks
+    key-store-password: q7f874uh7g211
+    key-store-type: JKS
+#    key-alias: freedommxc
 
-spring:
-  datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/zwebtool?serverTimezone=Asia/Shanghai
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
+#spring:
+#  datasource:
+#    username: root
+#    password: 123456
+#    url: jdbc:mysql://localhost:3306/zwebtool?serverTimezone=Asia/Shanghai
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
