@@ -68,6 +68,11 @@
             <!--<artifactId>druid-spring-boot-starter</artifactId>-->
             <!--<version>1.1.22</version>-->
         <!--</dependency>-->
+        <dependency>
+            <groupId>org.webjars.bowergithub.jquery</groupId>
+            <artifactId>jquery-dist</artifactId>
+            <version>3.5.1</version>
+        </dependency>
     </dependencies>
 
     <build>
