@@ -22,18 +22,22 @@ import java.util.Date;
  * 泛型：适用于多种数据类型执行相同的代码。（代码复用）
  *       泛型中的类型在使用时指定，不需要强制类型转换
 **/
-public class User_base {
-    int id;
-    String name;
-    Date registerDate;//注册日期
+public class UserBase {
+    protected int id;
+    protected String name;
+    protected String password;
+    protected Date cresteDate;//注册日期
+    protected Date changeDate;//修改日期
 
-    public User_base() {
+    public UserBase() {
     }
 
-    public User_base(int id, String name, Date registerDate) {
+    public UserBase(int id, String name, String password, Date cresteDate, Date changeDate) {
         this.id = id;
         this.name = name;
-        this.registerDate = registerDate;
+        this.password = password;
+        this.cresteDate = cresteDate;
+        this.changeDate = changeDate;
     }
 
     public int getId() {
@@ -52,20 +56,38 @@ public class User_base {
         this.name = name;
     }
 
-    public Date getRegisterDate() {
-        return registerDate;
+    public String getPassword() {
+        return password;
     }
 
-    public void setRegisterDate(Date registerDate) {
-        this.registerDate = registerDate;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getCresteDate() {
+        return cresteDate;
+    }
+
+    public void setCresteDate(Date cresteDate) {
+        this.cresteDate = cresteDate;
+    }
+
+    public Date getChangeDate() {
+        return changeDate;
+    }
+
+    public void setChangeDate(Date changeDate) {
+        this.changeDate = changeDate;
     }
 
     @Override
     public String toString() {
-        return "User_base{" +
+        return "UserBase{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", registerDate=" + registerDate +
+                ", password='" + password + '\'' +
+                ", cresteDate=" + cresteDate +
+                ", changeDate=" + changeDate +
                 '}';
     }
 }
