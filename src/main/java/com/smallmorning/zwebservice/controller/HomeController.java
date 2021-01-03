@@ -12,9 +12,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
+    //测试前端页面的时候，直接在这里改测试页的路由地址即可
+    /*@GetMapping("/")
     public String index(){
         return "index";
     }
+*/
+    @GetMapping("/")
+    public String index(){
+        return "test1";
+    }
 
+    @GetMapping("/test2")
+    public String test2(){
+        return "test2";
+    }
+
+    @GetMapping("login/test3")
+    public String test3(){
+        return "login/test3";
+    }
 }
