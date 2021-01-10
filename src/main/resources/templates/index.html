@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <title>首页</title>
     <link th:href="@{~/bootstrap-3.3.7-dist/css/bootstrap.min.css}" rel="stylesheet">
+    <style>
+        .space1{
+            height: 30px;
+        }
+        .bottom{
+            height: 200px;
+            /*background-color: #dddddd;*/
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -17,68 +26,70 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">ZZSXZC</a>
+            <a class="navbar-brand" href="/">Freedommxc</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">移动 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">桌面</a></li>
-                <li><a href="#">Web</a></li>
-                <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href="#">Action</a></li>-->
-                        <!--<li><a href="#">Another action</a></li>-->
-                        <!--<li><a href="#">Something else here</a></li>-->
-                        <!--<li role="separator" class="divider"></li>-->
-                        <!--<li><a href="#">Separated link</a></li>-->
-                        <!--<li role="separator" class="divider"></li>-->
-                        <!--<li><a href="#">One more separated link</a></li>-->
-                    <!--</ul>-->
-                <!--</li>-->
+                <li><a id="xcx" href="javascript:void(0);" onclick="inpage(this)">小程序</a></li>
+                <li><a id="az" href="javascript:void(0);" onclick="inpage(this)">安卓</a></li>
+                <li><a id="zm" href="javascript:void(0);" onclick="inpage(this)">桌面</a></li>
+                <li><a id="web" href="javascript:void(0);" onclick="inpage(this)">Web</a></li>
             </ul>
-            <form class="navbar-form navbar-left">
+            <form id="cz" class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="输入您想查找的内容">
                 </div>
-                <button type="submit" class="btn btn-default">提交</button>
+                <button type="button" class="btn btn-default" onclick="inpage(this)">提交</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">用户反馈</a></li>
-                <li><a href="#">关于</a></li>
-                <li><a href="#">登录</a></li>
-                <li><a href="#">注册</a></li>
-                <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href="#">Action</a></li>-->
-                        <!--<li><a href="#">Another action</a></li>-->
-                        <!--<li><a href="#">Something else here</a></li>-->
-                        <!--<li role="separator" class="divider"></li>-->
-                        <!--<li><a href="#">Separated link</a></li>-->
-                    <!--</ul>-->
-                <!--</li>-->
+                <li><a id="fk" href="javascript:void(0);" onclick="inpage(this)">用户反馈</a></li>
+                <li><a id="gy" href="javascript:void(0);" onclick="inpage(this)">关于</a></li>
+                <li><a id="dl" href="javascript:void(0);" onclick="inpage(this)">登录</a></li>
+                <li><a id="zc" href="javascript:void(0);" onclick="inpage(this)">注册</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<h2 align="center" style="color: #2aabd2">本网站用于个人技术分享，网站正在搭建中。</h2>
+<div class="space1">
+</div>
+<div align="center">
+    <image id="img" src="/image/wel.png" width="300" height="300"></image>
+</div>
+
+<h2 id="des" align="center" style="color: #2aabd2">Welcome</h2>
 <!--<div align="center"><a href="/video"><button type="button" class="btn btn-success">点击跳转</button></a></div>-->
-<footer class="panel-footer" style="width: 100%; overflow: hidden;">
+<div class="bottom">
+</div>
+<footer class="panel-footer" style="width: 100%; overflow: hidden;background-color: #F8F8F8">
     <div class="container">
         <div style="text-align: center;">
             <div>
                 <p style=" color: gray;margin:0px; padding:0px;">版权所有 freedommxc.top</p>
             </div>
             <div>
-                <a href="#" style=" color: gray;">鲁ICP备2021000259号-1</a></li>
+                <a href="https://beian.miit.gov.cn/#/Integrated/index" style=" color: gray;">鲁ICP备2021000259号-1</a></li>
             </div>
         </div>
     </div>
 </footer>
+<script >
+    function inpage(element){
+        if(element.id=="xcx"){
+            document.getElementById("img").src="/image/jdstb.jpg";
+            document.getElementById("des").innerHTML="剪刀石头布小程序";
+        }else if(element.id=="gy"){
+            document.getElementById("img").src="/image/abo.png";
+            document.getElementById("des").innerHTML="本网站主要用于分享个人开发的应用";
+        }else{
+            document.getElementById("img").src="/image/dev.png";
+            document.getElementById("des").innerHTML="模块或应用正在开发中...";
+        }
+    }
+</script>
 <script th:src="@{~/webjars/jquery/dist/jquery.min.js}"></script>
 <script th:src="@{~/bootstrap-3.3.7-dist/js/bootstrap.min.js}"}></script>
+
 </body>
 </html>
