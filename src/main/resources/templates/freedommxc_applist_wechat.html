@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>freedommxc</title>
+<!-- 外部样式表 -->
+<link rel="stylesheet" type="text/css" href="css/zfront.css">
+<link rel="shortcut icon" href="icon/iconx.png">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    /* 内部样式表
+    body {margin:0;} */
+</style>
+</head>
+<body>
+
+<ul class="nav">
+    <li><a href="/">freedommxc</a></li>
+    <li><a href="/webapp">WebAPP</a></li>
+    <li><a href="/app">手机APP</a></li>
+    <li><a href="/pc">桌面程序</a></li>
+    <li class="active"><a href="/wechat">小程序</a></li>
+    <li><a href="/game">游戏</a></li>
+    <li style="float:right"><a href="/about">关于</a></li>
+</ul>
+
+<script>
+    var li = document.querySelectorAll('.nav li');
+    for (var i = 0; i < li.length; i++)
+        li[i].onclick = function () {
+            for (var i = 0; i < li.length; i++) li[i].className = '';
+            this.className='active'
+        }
+</script>
+
+<div style="padding:20px;margin-top:30px;background-color:#fbfbfb;height:800px;">
+    <h1>小程序</h1>
+    <div id="zapplist">
+        <div class="flow" v-for="app in applist">
+            <h2>{{app.name}}</h2>
+            <div class="image">
+                <img width=200 heigth=200 v-bind:src="app.imageUrl">
+            </div>        
+            <a v-bind:href="app.desUrl" target="_blank"><button class="btnlearnmore"><span class="content">查看详情</span></button></a>
+            <!-- 压缩包会直接下载,txt和图片会直接打开 -->
+            <a v-bind:href="app.appUrl" target="_blank"><button class="btndownload"><span class="content">点击进入</span></button></a>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <!-- 内联样式 -->
+    <div style="text-align: center;">
+        <div>
+            <p style=" color: white;margin:0px; padding:0px;">版权所有 freedommxc.top</p>
+        </div>
+        <div>
+            <a href="https://beian.miit.gov.cn/#/Integrated/index" style=" color:white;text-decoration: none;">鲁ICP备2021000259号-1</a></li>
+        </div>
+        <!-- 注意图片的引入路径 -->
+        <div>
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37078202000243" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="image/备案图标.png" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:white;">鲁公网安备 37078202000243号</p></a>
+        </div>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el:'#zapplist',
+        data:{
+            applist:[
+                {
+                    name:"应用名",
+                    imageUrl:"image/test.png",
+                    desUrl:"https://github.com/zzsxzc",
+                    appUrl:"https://github.com/zzsxzc"
+                },
+                {
+                    name:"应用名2",
+                    imageUrl:"image/test.png",
+                    desUrl:"https://github.com/zzsxzc",
+                    appUrl:"https://github.com/zzsxzc"
+                }
+            ]
+        }
+    })
+</script>
+<!-- 导航栏切换 -->
+<script>
+    var li = document.querySelectorAll('.nav li');
+    for (var i = 0; i < li.length; i++)
+        li[i].onclick = function () {
+            for (var i = 0; i < li.length; i++) li[i].className = '';
+            this.className='active'
+        }
+</script>
+
+<!-- 引入jQuery和Vue -->
+<!-- <script type="text/javascript" src="js/jquery/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script> -->
+</body>
+</html>

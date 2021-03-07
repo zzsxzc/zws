@@ -14,21 +14,35 @@ public class HomeController {
 
     //测试前端页面的时候，直接在这里改测试页的路由地址即可
     @GetMapping("/")
-    public String index(){
-        return "index";
-    }
-    /*@GetMapping("/")
-    public String index(){
-        return "test1";
-    }*/
-
-    @GetMapping("/test2")
-    public String test2(){
-        return "test2";
+    public String home(){
+        return "freedommxc_homepage";
     }
 
-    @GetMapping("login/test3")
-    public String test3(){
-        return "login/test3";
+    @GetMapping("/webapp")
+    public String webapp(){ return "freedommxc_applist_webapp";}
+
+    @GetMapping("/app")
+    public String app(){
+        return "freedommxc_applist_app";
+    }
+
+    @GetMapping("/pc")
+    public String pc(){
+        return "freedommxc_applist_pc";
+    }
+
+    @GetMapping("/wechat")
+    public String wechat(){
+        return "freedommxc_applist_wechat";
+    }
+
+    @GetMapping("/game")
+    public String game(){
+        return "freedommxc_applist_game";
+}
+
+    @GetMapping("/about")
+    public String about(){
+        return "freedommxc_about";
     }
 }
