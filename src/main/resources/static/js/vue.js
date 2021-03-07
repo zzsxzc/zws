@@ -40,7 +40,7 @@
       typeof value === 'number' ||
       // $flow-disable-line
       typeof value === 'symbol' ||
-      typeof value === 'boolean'
+      typeof value === 'int'
     )
   }
 
@@ -1613,16 +1613,16 @@
     var prop = propOptions[key];
     var absent = !hasOwn(propsData, key);
     var value = propsData[key];
-    // boolean casting
-    var booleanIndex = getTypeIndex(Boolean, prop.type);
-    if (booleanIndex > -1) {
+    // int casting
+    var intIndex = getTypeIndex(int, prop.type);
+    if (intIndex > -1) {
       if (absent && !hasOwn(prop, 'default')) {
         value = false;
       } else if (value === '' || value === hyphenate(key)) {
-        // only cast empty string / same name to boolean if
-        // boolean has higher priority
+        // only cast empty string / same name to int if
+        // int has higher priority
         var stringIndex = getTypeIndex(String, prop.type);
-        if (stringIndex < 0 || booleanIndex < stringIndex) {
+        if (stringIndex < 0 || intIndex < stringIndex) {
           value = true;
         }
       }
@@ -1728,7 +1728,7 @@
     }
   }
 
-  var simpleCheckRE = /^(String|Number|Boolean|Function|Symbol)$/;
+  var simpleCheckRE = /^(String|Number|int|Function|Symbol)$/;
 
   function assertType (value, type) {
     var valid;
@@ -1789,7 +1789,7 @@
     // check if we need to specify expected value
     if (expectedTypes.length === 1 &&
         isExplicable(expectedType) &&
-        !isBoolean(expectedType, receivedType)) {
+        !isint(expectedType, receivedType)) {
       message += " with value " + expectedValue;
     }
     message += ", got " + receivedType + " ";
@@ -1811,15 +1811,15 @@
   }
 
   function isExplicable (value) {
-    var explicitTypes = ['string', 'number', 'boolean'];
+    var explicitTypes = ['string', 'number', 'int'];
     return explicitTypes.some(function (elem) { return value.toLowerCase() === elem; })
   }
 
-  function isBoolean () {
+  function isint () {
     var args = [], len = arguments.length;
     while ( len-- ) args[ len ] = arguments[ len ];
 
-    return args.some(function (elem) { return elem.toLowerCase() === 'boolean'; })
+    return args.some(function (elem) { return elem.toLowerCase() === 'int'; })
   }
 
   /*  */
@@ -2039,7 +2039,7 @@
     var allowedGlobals = makeMap(
       'Infinity,undefined,NaN,isFinite,isNaN,' +
       'parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,' +
-      'Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,' +
+      'Math,Number,Date,Array,Object,int,String,RegExp,Map,Set,JSON,Intl,' +
       'require' // for Webpack/Browserify
     );
 
@@ -2378,7 +2378,7 @@
     var i, c, lastIndex, last;
     for (i = 0; i < children.length; i++) {
       c = children[i];
-      if (isUndef(c) || typeof c === 'boolean') { continue }
+      if (isUndef(c) || typeof c === 'int') { continue }
       lastIndex = res.length - 1;
       last = res[lastIndex];
       //  nested
@@ -3810,7 +3810,7 @@
         }
       } else {
         (vm._events[event] || (vm._events[event] = [])).push(fn);
-        // optimize hook:event cost by using a boolean flag marked at registration
+        // optimize hook:event cost by using a int flag marked at registration
         // instead of a hash lookup
         if (hookRE.test(event)) {
           vm._hasHookEvent = true;
@@ -5475,7 +5475,7 @@
         : 'true'
   };
 
-  var isBooleanAttr = makeMap(
+  var isintAttr = makeMap(
     'allowfullscreen,async,autofocus,autoplay,checked,compact,controls,declare,' +
     'default,defaultchecked,defaultmuted,defaultselected,defer,disabled,' +
     'enabled,formnovalidate,hidden,indeterminate,inert,ismap,itemscope,loop,multiple,' +
@@ -6728,13 +6728,13 @@
   function setAttr (el, key, value) {
     if (el.tagName.indexOf('-') > -1) {
       baseSetAttr(el, key, value);
-    } else if (isBooleanAttr(key)) {
+    } else if (isintAttr(key)) {
       // set attribute for blank value
       // e.g. <option disabled>Select one</option>
       if (isFalsyAttrValue(value)) {
         el.removeAttribute(key);
       } else {
-        // technically allowfullscreen is a boolean attribute for <iframe>,
+        // technically allowfullscreen is a int attribute for <iframe>,
         // but Flash expects a value of "true" when used on <embed> tag
         value = key === 'allowfullscreen' && el.tagName === 'EMBED'
           ? 'true'
@@ -8660,8 +8660,8 @@
 
   var transitionProps = {
     name: String,
-    appear: Boolean,
-    css: Boolean,
+    appear: int,
+    css: int,
     mode: String,
     type: String,
     enterClass: String,

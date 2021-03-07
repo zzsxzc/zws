@@ -1,38 +1,44 @@
 package com.smallmorning.zwebservice.entity;
+
+import org.springframework.stereotype.Component;
+
+import java.io.Serializable;
+
 /**
 *@Author zzsxzc
 *@Date 20:47 2021/3/4
 *@Description 产品类
 **/
-public class Project {
+@Component
+public class AppMessage implements Serializable {
     private int id;
     private String name;
     private String kind;
-    private boolean isOpenSource;//是否开源
-    private boolean isShow;//是否展示
+    private int isOpenSource;//是否开源
+    private int isShow;//是否展示
     private String version;//版本号
-    private int downloutCount;//下载量
-    private boolean isNeedDownload;//是否需要下载 webapp不需要下载
+    private int downloudCount;//下载量
+    private int isNeedDownload;//是否需要下载 webapp不需要下载
     private String shorDescription;//简单描述
     private String imageUrl;//文件描述图片、图标地址
-    private String appPackageUrl;//安装包地址
+    private String appUrl;//安装包地址 webAPP的话是访问地址
     private String onlineDesUrl;//在线描述Url 指向gitee md文件
 
-    public Project() {
+    public AppMessage() {
     }
 
-    public Project(int id, String name, String kind, boolean isOpenSource, boolean isShow, String version, int downloutCount, boolean isNeedDownload, String shorDescription, String imageUrl, String appPackageUrl, String onlineDesUrl) {
+    public AppMessage(int id, String name, String kind, int isOpenSource, int isShow, String version, int downloudCount, int isNeedDownload, String shorDescription, String imageUrl, String appUrl, String onlineDesUrl) {
         this.id = id;
         this.name = name;
         this.kind = kind;
         this.isOpenSource = isOpenSource;
         this.isShow = isShow;
         this.version = version;
-        this.downloutCount = downloutCount;
+        this.downloudCount = downloudCount;
         this.isNeedDownload = isNeedDownload;
         this.shorDescription = shorDescription;
         this.imageUrl = imageUrl;
-        this.appPackageUrl = appPackageUrl;
+        this.appUrl = appUrl;
         this.onlineDesUrl = onlineDesUrl;
     }
 
@@ -60,19 +66,19 @@ public class Project {
         this.kind = kind;
     }
 
-    public boolean isOpenSource() {
+    public int isOpenSource() {
         return isOpenSource;
     }
 
-    public void setOpenSource(boolean openSource) {
+    public void setOpenSource(int openSource) {
         isOpenSource = openSource;
     }
 
-    public boolean isShow() {
+    public int isShow() {
         return isShow;
     }
 
-    public void setShow(boolean show) {
+    public void setShow(int show) {
         isShow = show;
     }
 
@@ -84,19 +90,19 @@ public class Project {
         this.version = version;
     }
 
-    public int getDownloutCount() {
-        return downloutCount;
+    public int getdownloudCount() {
+        return downloudCount;
     }
 
-    public void setDownloutCount(int downloutCount) {
-        this.downloutCount = downloutCount;
+    public void setdownloudCount(int downloudCount) {
+        this.downloudCount = downloudCount;
     }
 
-    public boolean isNeedDownload() {
+    public int isNeedDownload() {
         return isNeedDownload;
     }
 
-    public void setNeedDownload(boolean needDownload) {
+    public void setNeedDownload(int needDownload) {
         isNeedDownload = needDownload;
     }
 
@@ -116,12 +122,12 @@ public class Project {
         this.imageUrl = imageUrl;
     }
 
-    public String getAppPackageUrl() {
-        return appPackageUrl;
+    public String getappUrl() {
+        return appUrl;
     }
 
-    public void setAppPackageUrl(String appPackageUrl) {
-        this.appPackageUrl = appPackageUrl;
+    public void setappUrl(String appUrl) {
+        this.appUrl = appUrl;
     }
 
     public String getOnlineDesUrl() {
@@ -134,18 +140,18 @@ public class Project {
 
     @Override
     public String toString() {
-        return "Project{" +
+        return "AppMessage{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", kind='" + kind + '\'' +
                 ", isOpenSource=" + isOpenSource +
                 ", isShow=" + isShow +
                 ", version='" + version + '\'' +
-                ", downloutCount=" + downloutCount +
+                ", downloudCount=" + downloudCount +
                 ", isNeedDownload=" + isNeedDownload +
                 ", shorDescription='" + shorDescription + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", appPackageUrl='" + appPackageUrl + '\'' +
+                ", appUrl='" + appUrl + '\'' +
                 ", onlineDesUrl='" + onlineDesUrl + '\'' +
                 '}';
     }

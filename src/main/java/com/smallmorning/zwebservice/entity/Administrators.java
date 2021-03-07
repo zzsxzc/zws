@@ -1,5 +1,7 @@
 package com.smallmorning.zwebservice.entity;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
 /**
