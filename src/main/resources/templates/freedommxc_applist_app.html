@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="css/zfront.css">
 <link rel="shortcut icon" href="icon/iconx.png">
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style>
     /* 内部样式表
     body {margin:0;} */
@@ -42,7 +43,7 @@
         <div class="image">
             <img width=200 heigth=200 v-bind:src="app.imageUrl">
         </div>        
-        <a v-bind:href="app.desUrl" target="_blank"><button class="btnlearnmore"><span class="content">查看详情</span></button></a>
+        <a v-bind:href="app.onlineDesUrl" target="_blank"><button class="btnlearnmore"><span class="content">查看详情</span></button></a>
         <!-- 压缩包会直接下载,txt和图片会直接打开 -->
         <a v-bind:href="app.appUrl" target="_blank"><button class="btndownload"><span class="content">点击下载</span></button></a>
     </div>
@@ -68,20 +69,12 @@
     var app = new Vue({
         el:'#zapplist',
         data:{
-            applist:[
-                {
-                    name:"应用名",
-                    imageUrl:"image/test.png",
-                    desUrl:"https://github.com/zzsxzc",
-                    appUrl:"download/testDownload.rar"
-                },
-                {
-                    name:"应用名2",
-                    imageUrl:"image/test.png",
-                    desUrl:"https://github.com/zzsxzc",
-                    appUrl:"download/testDownload.rar"
-                }
-            ]
+            applist:[]
+        },
+        mounted () {
+            axios
+                .get('/getapplist')
+                .then(response => (this.applist = response.data))
         }
     })
 </script>
